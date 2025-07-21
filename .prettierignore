@@ -1,0 +1,26 @@
+# node_modules
+**/node_modules/**
+
+# 빌드 아웃풋
+**/build/**
+**/.next/**
+
+# 테스트 커버리지
+**/coverage/**
+
+# Git 관련
+**/.git/**
+**/.github/**
+
+# 편집기 세팅
+**/.vscode/**
+
+# 공개 폴더
+**/public/**
+**/static/**
+
+# Turborepo 캐시
+**/.turbo/**
+
+# 타입 정의 파일
+**/*.d.ts
