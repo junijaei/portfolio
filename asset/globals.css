@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+@import './reset.css' layer(base);
+@import "galmuri/dist/galmuri.css";
+
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('fonts/DungGeunMo.woff2') format('woff2'),
+  url('fonts/DungGeunMo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cafe24PROUP';
+  src: url('fonts/Cafe24PROUP.woff2') format('woff2'),
+  url('fonts/Cafe24PROUP.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@utility font-dunggeunmo {
+  font-family: DungGeunMo, Cafe24PROUP, Galmuri11, Arial, Helvetica, sans-serif;
+}
+
+@utility font-cafe24 {
+  font-family: Cafe24PROUP, DungGeunMo, Arial, Helvetica, sans-serif;
+}
+
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+@utility inline-flex-center {
+  @apply inline-flex items-center justify-center;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
