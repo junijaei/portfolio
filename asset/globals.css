@@ -2,6 +2,14 @@
 @import './reset.css' layer(base);
 @import "galmuri/dist/galmuri.css";
 
+@theme {
+  --shadow-sm: 0px 0px 10px 0px;
+  --shadow-md: 0px 0px 15px 2px;
+  --shadow-lg: 0px 0px 20px 4px;
+
+  --color-point-dark: #9EFF00;
+}
+
 @font-face {
   font-family: 'DungGeunMo';
   src: url('fonts/DungGeunMo.woff2') format('woff2'),
@@ -9,6 +17,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'Cafe24PROUP';
   src: url('fonts/Cafe24PROUP.woff2') format('woff2'),
@@ -28,23 +37,11 @@
 @utility flex-center {
   @apply flex items-center justify-center;
 }
+
 @utility inline-flex-center {
   @apply inline-flex items-center justify-center;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
+@utility point-text {
+  @apply dark:text-point-dark;
 }
