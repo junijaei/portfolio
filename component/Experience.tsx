@@ -20,7 +20,7 @@ export default function Experience({
         >
           <div className={'flex flex-col gap-2'}>
             <p className={'whitespace-nowrap text-2xl'}>{experience.company}</p>
-            <p className={'whitespace-nowrap dark:text-zinc-600'}>
+            <p className={'text-content-500 whitespace-nowrap'}>
               {experience.period}
             </p>
           </div>
@@ -31,30 +31,22 @@ export default function Experience({
                 className={'flex gap-4'}
               >
                 <div className={'mt-1.5 flex flex-col items-center'}>
-                  <div className={'point-text text-sm'}>●</div>
-                  <motion.div
-                    className="h-full w-[1px] dark:bg-zinc-700"
-                    layout={'size'}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <div className={'text-surface-500 text-sm'}>●</div>
+                  <div className="bg-surface-200 h-full w-[1px]" />
                 </div>
                 <div
-                  className={
-                    'flex w-full flex-col gap-4 pb-4 dark:text-zinc-300'
-                  }
+                  className={'text-content-100 flex w-full flex-col gap-4 pb-4'}
                 >
                   <p className={'flex items-center gap-4'}>
-                    <span className={'text-2xl font-bold dark:text-zinc-100'}>
+                    <span className={'text-content-primary text-2xl font-bold'}>
                       {work.name}
                     </span>
-                    <span className={'text-sm dark:text-zinc-600'}>
+                    <span className={'text-content-500 text-sm'}>
                       {work.period}
                     </span>
                   </p>
                   {work.summary && (
-                    <p className={'break-keep dark:text-zinc-500'}>
-                      {work.summary}
-                    </p>
+                    <p className={'break-keep'}>{work.summary}</p>
                   )}
                   <Accordion
                     details={work.details}
@@ -81,13 +73,14 @@ function Accordion({
   const toggleOpen = () => setIsOpen(!isOpen);
 
   return (
-    <div
+    <motion.div
+      animate={{ width: '100%' }}
       className={clsx(
         '-mt-2 flex flex-col items-start gap-2 overflow-hidden rounded-lg p-2',
-        isOpen
-          ? 'w-full dark:bg-zinc-800/50'
-          : 'w-fit border dark:border-zinc-700',
+        isOpen ? 'bg-surface-100' : '',
       )}
+      exit={{ width: 'fit-content' }}
+      initial={{ width: 'fit-content' }}
     >
       <button
         className={'inline-flex-center cursor-pointer gap-1'}
@@ -95,7 +88,7 @@ function Accordion({
       >
         <LucideChevronDown
           className={clsx(
-            'h-5 w-5 transition duration-500',
+            'text-content-500 h-5 min-h-5 w-5 min-w-5 shrink-0 transition duration-500',
             isOpen && 'rotate-180',
           )}
         />
@@ -106,35 +99,40 @@ function Accordion({
           <>
             <motion.div
               animate={{ width: '100%' }}
-              className={'h-[1px] dark:bg-zinc-700'}
+              className={'bg-surface-300 h-[1px]'}
+              exit={{ width: 0, transition: { duration: 0 } }}
               initial={{ width: 0 }}
               transition={{ duration: 0.5 }}
             />
             <motion.ul
-              animate={{ opacity: 1, translateY: 0 }}
+              animate={{ opacity: 1, translateY: 0, height: 'auto' }}
               className={'ml-2 flex origin-top flex-col gap-2'}
-              initial={{ opacity: 0, translateY: -10 }}
+              exit={{ opacity: 0, translateY: -10, height: 0 }}
+              initial={{ opacity: 0, translateY: -10, height: 0 }}
               transition={{
                 ease: 'easeInOut',
                 duration: 0.3,
               }}
             >
-              {details.map(detail => (
-                <li
+              {details.map((detail, index) => (
+                <motion.li
                   key={workName + detail.label}
+                  animate={{ opacity: 1, x: 0 }}
                   className={'flex flex-col gap-1'}
+                  initial={{ opacity: 0, x: -20 }}
+                  transition={{ delay: 0.2 + index * 0.1, duration: 0.3 }}
                 >
                   <Detail
                     content={detail.value}
                     title={detail.label}
                   />
-                </li>
+                </motion.li>
               ))}
             </motion.ul>
           </>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 
@@ -147,7 +145,7 @@ function Detail({
 }) {
   return (
     <>
-      <p className={'dark:text-zinc-500'}>{title}</p>
+      <p className={'text-content-500'}>{title}</p>
       {Array.isArray(content) ? (
         <ul className={'ml-2 flex flex-col gap-1'}>
           {content.map((c, index) => (
