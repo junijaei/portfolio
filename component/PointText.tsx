@@ -8,5 +8,5 @@ export default function PointText({
   className?: string;
   children: ReactNode;
 }) {
-  return <span className={clsx('point-text', className)}>{children}</span>;
+  return <span className={clsx('text-primary', className)}>{children}</span>;
 }

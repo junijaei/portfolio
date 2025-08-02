@@ -7,6 +7,7 @@ import IntroChips from '@/component/IntroChips';
 import PointText from '@/component/PointText';
 import Experience from '@/component/Experience';
 import experience from '@/data/experience';
+import Section from '@/component/Section';
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
         <div className={'flex flex-col gap-4'}>
           <IntroChips />
           <div>
-            <p className={'text-8xl dark:text-zinc-600'}>프론트엔드 개발자</p>
+            <p className={'text-content-500 text-8xl'}>프론트엔드 개발자</p>
             <p className={'text-8xl'}>
               전희재입니다<PointText>.</PointText>
             </p>
@@ -29,7 +30,7 @@ export default function Home() {
           <ContactButton>
             <svg
               className={'h-6 w-6'}
-              fill={'#d4d4d8'}
+              fill={'var(--color-content-100)'}
               role="img"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
@@ -45,14 +46,18 @@ export default function Home() {
           </ContactButton>
         </div>
         <Introduction />
-        <hr className={'text-zinc-700 dark:text-zinc-600'} />
-        <section className={'flex flex-col gap-12'}>
-          <Title>경력</Title>
+        <hr className={'text-surface-300'} />
+        <Section>
+          <Title>
+            경력<PointText>.</PointText>
+          </Title>
           <Experience experiences={experience} />
-        </section>
-        <hr className={'text-zinc-700 dark:text-zinc-600'} />
-        <section className={'flex flex-col gap-8'}>
-          <Title>핵심 역량</Title>
+        </Section>
+        <hr className={'text-surface-300'} />
+        <Section>
+          <Title>
+            핵심 역량<PointText>.</PointText>
+          </Title>
           <div className={'flex items-stretch gap-8'}>
             <Card
               contents={[
@@ -75,10 +80,10 @@ export default function Home() {
               title={'기획·디자인·백엔드와의 협업 경험'}
             />
           </div>
-        </section>
-        <section className={'flex flex-col gap-8'}>
+        </Section>
+        <Section>
           <Title>기술</Title>
-        </section>
+        </Section>
       </div>
     </>
   );

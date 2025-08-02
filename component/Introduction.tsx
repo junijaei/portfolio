@@ -1,6 +1,6 @@
 export default function Introduction() {
   return (
-    <div className={'text-lg text-zinc-700 dark:text-zinc-400'}>
+    <div className={'text-content-300 text-lg'}>
       <p>
         안녕하세요, 새로운 기술을 빠르게 학습하고 실무에 적용하는 2년차
         프론트엔드 개발자입니다.

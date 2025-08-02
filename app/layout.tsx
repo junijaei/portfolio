@@ -22,14 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={pretendard.variable}
+      className={clsx(pretendard.variable, '')}
       lang="en"
     >
       <body
-        className={clsx(
-          pretendard.className,
-          'bg-white p-24 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-50',
-        )}
+        className={clsx(pretendard.className, 'bg-surface text-content p-24')}
       >
         {children}
       </body>

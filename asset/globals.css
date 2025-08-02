@@ -2,12 +2,66 @@
 @import './reset.css' layer(base);
 @import "galmuri/dist/galmuri.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --shadow-sm: 0px 0px 10px 0px;
   --shadow-md: 0px 0px 15px 2px;
   --shadow-lg: 0px 0px 20px 4px;
 
-  --color-point-dark: #9EFF00;
+  /** Theme primary colors */
+  --color-primary: #2ecc0a;
+  --color-primary-100: #44c429;
+  --color-primary-200: #53bc3a;
+  --color-primary-300: #5eb348;
+  --color-primary-400: #67ab53;
+  --color-primary-500: #6ea25d;
+
+  /** Theme surface colors */
+  --color-surface: #e8e8e8;
+  --color-surface-50: #e3e3e3;
+  --color-surface-100: #dcdcdc;
+  --color-surface-200: #d0d0d0;
+  --color-surface-300: #c4c4c4;
+  --color-surface-400: #b8b8b8;
+  --color-surface-500: #adadad;
+
+  /** Theme content colors */
+  --color-content: #121212;
+  --color-content-100: #282828;
+  --color-content-200: #3f3f3f;
+  --color-content-300: #575757;
+  --color-content-400: #717171;
+  --color-content-500: #8b8b8b;
+}
+
+@layer base {
+  .dark {
+
+    /** Theme primary colors */
+    --color-primary: #3adf15;
+    --color-primary-100: #5fe340;
+    --color-primary-200: #7ae85c;
+    --color-primary-300: #91eb75;
+    --color-primary-400: #a5ef8d;
+    --color-primary-500: #b9f3a4;
+
+    /** Theme surface colors */
+    --color-surface: #1e1e1e;
+    --color-surface-100: #282828;
+    --color-surface-200: #3f3f3f;
+    --color-surface-300: #575757;
+    --color-surface-400: #717171;
+    --color-surface-500: #8b8b8b;
+
+    /** Theme content colors */
+    --color-content: #e8e8e8;
+    --color-content-100: #dcdcdc;
+    --color-content-200: #d0d0d0;
+    --color-content-300: #c4c4c4;
+    --color-content-400: #b8b8b8;
+    --color-content-500: #adadad;
+  }
 }
 
 @font-face {
@@ -40,8 +94,4 @@
 
 @utility inline-flex-center {
   @apply inline-flex items-center justify-center;
-}
-
-@utility point-text {
-  @apply dark:text-point-dark;
 }
