@@ -8,7 +8,7 @@ import { getPointsCount, mapCubePoints } from '@/utils/three-utils';
 type Phase = 'build' | 'rotate' | 'hold';
 const PHASE_ORDER: Phase[] = ['build', 'rotate', 'hold'];
 const DURATION = {
-  fall: 2,
+  build: 2,
   rotate: 1,
   hold: 1,
 };
@@ -40,16 +40,6 @@ export default function DotsBuilding() {
     setPhase(PHASE_ORDER[nextIndex]);
   };
 
-  const resetPosition = () => {
-    if (!groupRef.current) return;
-    groupRef.current.visible = false;
-    for (let i = 0; i < getPointsCount() * 3; i++) currentPositions[i] = 0;
-
-    // 위치, 회전 초기화
-    groupRef.current.position.set(0, 0, 0);
-    groupRef.current.rotation.set(0, 0, 0);
-  };
-
   useFrame((_, delta) => {
     if (!pointsRef.current || !groupRef.current) return;
 
@@ -60,7 +50,7 @@ export default function DotsBuilding() {
       case 'build': {
         groupRef.current.visible = true;
         const totalPoints = getPointsCount();
-        const progress = Math.min(clock.current / 2, 1);
+        const progress = Math.min(clock.current / DURATION.build, 1);
         const visiblePoints = Math.floor(totalPoints * progress);
 
         if (!posAttr) break;

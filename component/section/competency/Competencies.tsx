@@ -1,9 +1,9 @@
 import { Competency } from '@/types/Competency';
 import { LucideQuote } from 'lucide-react';
-import Scene from '@/component/Scene';
-import DotsBuilding from '@/component/DotsBuilding';
-import DotsRefactoring from '@/component/DotsRefactoring';
-import DotsMerging from '@/component/DotsMerging';
+import Scene from '@/component/section/competency/dots-animation/Scene';
+import DotsBuilding from '@/component/section/competency/dots-animation/DotsBuilding';
+import DotsRefactoring from '@/component/section/competency/dots-animation/DotsRefactoring';
+import DotsMerging from '@/component/section/competency/dots-animation/DotsMerging';
 
 export default function Competencies({
   competencies,

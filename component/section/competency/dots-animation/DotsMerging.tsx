@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
-import DotsCooperation from '@/component/DotsCooperation';
+import DotsCooperation from '@/component/section/competency/dots-animation/DotsCooperation';
 import { easeInOut } from 'motion';
 
 type Phase = 'merge' | 'rotate' | 'hold';
@@ -40,12 +40,12 @@ export default function DotsMerging() {
 
     switch (phase) {
       case 'merge': {
-        const progress = Math.min(clock.current / DURATION.merge, 1);
-        setMergeProgress(progress);
+        const t = Math.min(clock.current / DURATION.merge, 1);
+        setMergeProgress(t);
         groupRef.current.position.set(0, 0, 0);
         groupRef.current.rotation.set(0, 0, 0);
 
-        if (progress >= 1) goNextPhase();
+        if (t >= 1) goNextPhase();
         break;
       }
       case 'rotate': {

@@ -7,11 +7,10 @@ import { MathUtils } from 'three';
 import { easeInOut } from 'motion';
 import { getPointsCount, mapCubePoints } from '@/utils/three-utils';
 
-type Phase = 'fall' | 'unclean' | 'rotate' | 'hold';
-const PHASE_ORDER: Phase[] = ['fall', 'unclean', 'rotate', 'hold'];
+type Phase = 'refactor' | 'rotate' | 'hold';
+const PHASE_ORDER: Phase[] = ['refactor', 'rotate', 'hold'];
 const DURATION = {
-  fall: 1,
-  unclean: 1,
+  refactor: 2,
   rotate: 1,
   hold: 1,
 };
@@ -21,7 +20,7 @@ export default function DotsRefactoring() {
   const groupRef = useRef<THREE.Group>(null);
   const clock = useRef(0);
   const rotateClock = useRef(0);
-  const [phase, setPhase] = useState<Phase>('fall');
+  const [phase, setPhase] = useState<Phase>('refactor');
 
   const jitter = () => MathUtils.randFloat(-0.25, 0.25);
 
@@ -56,16 +55,6 @@ export default function DotsRefactoring() {
     setPhase(PHASE_ORDER[nextIndex]);
   };
 
-  const resetPosition = () => {
-    if (!groupRef.current) return;
-    groupRef.current.visible = false;
-    for (let i = 0; i < getPointsCount() * 3; i++) currentPositions[i] = 0;
-
-    // 위치, 회전 초기화
-    groupRef.current.position.set(0, 0, 0);
-    groupRef.current.rotation.set(0, 0, 0);
-  };
-
   useFrame((_, delta) => {
     if (!pointsRef.current || !groupRef.current) return;
 
@@ -73,39 +62,39 @@ export default function DotsRefactoring() {
     const posAttr = pointsRef.current.geometry.attributes.position;
 
     switch (phase) {
-      case 'fall': {
+      case 'refactor': {
         groupRef.current.visible = true;
-        const t = Math.min(clock.current / DURATION.fall, 1);
-        const eased = easeInOut(t);
+        const t = Math.min(clock.current / DURATION.refactor, 1);
+        if (t < 0.5) {
+          // [0.0 ~ 0.5) → fall 단계
+          const localT = t / 0.5;
+          const eased = easeInOut(localT);
 
-        for (let i = 0; i < getPointsCount() * 3; i++) {
-          const interpolated = THREE.MathUtils.lerp(
-            fallStartPositions[i],
-            fallEndPositions[i],
-            eased,
-          );
-          currentPositions[i] = interpolated + jitter();
+          for (let i = 0; i < getPointsCount() * 3; i++) {
+            const interpolated = THREE.MathUtils.lerp(
+              fallStartPositions[i],
+              fallEndPositions[i],
+              eased,
+            );
+            currentPositions[i] = interpolated + jitter();
+          }
+        } else {
+          // [0.5 ~ 1.0] → unclean 단계
+          const localT = (t - 0.5) / 0.5;
+          const shakeStrength = (1 - localT) * 0.7;
+
+          for (let i = 0; i < mergedPositions.length; i += 3) {
+            const baseX = mergedPositions[i];
+            const baseY = mergedPositions[i + 1];
+            const baseZ = mergedPositions[i + 2];
+
+            currentPositions[i] = baseX + (Math.random() - 0.5) * shakeStrength;
+            currentPositions[i + 1] =
+              baseY + (Math.random() - 0.5) * shakeStrength;
+            currentPositions[i + 2] =
+              baseZ + (Math.random() - 0.5) * shakeStrength;
+          }
         }
-
-        if (t >= 1) goNextPhase();
-        break;
-      }
-      case 'unclean': {
-        const t = Math.min(clock.current / DURATION.unclean, 1);
-        const shakeStrength = (1 - t) * 0.7;
-
-        for (let i = 0; i < mergedPositions.length; i += 3) {
-          const baseX = mergedPositions[i];
-          const baseY = mergedPositions[i + 1];
-          const baseZ = mergedPositions[i + 2];
-
-          currentPositions[i] = baseX + (Math.random() - 0.5) * shakeStrength;
-          currentPositions[i + 1] =
-            baseY + (Math.random() - 0.5) * shakeStrength;
-          currentPositions[i + 2] =
-            baseZ + (Math.random() - 0.5) * shakeStrength;
-        }
-
         if (t >= 1) goNextPhase();
         break;
       }
