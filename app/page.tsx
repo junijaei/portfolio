@@ -1,18 +1,19 @@
-import Card from '@/component/Card';
 import Title from '@/component/Title';
 import { LucideMail, LucideNotepadText } from 'lucide-react';
 import ContactButton from '@/component/ContactButton';
 import Introduction from '@/component/Introduction';
 import IntroChips from '@/component/IntroChips';
 import PointText from '@/component/PointText';
-import Experience from '@/component/Experience';
+import Experience from '@/component/section/experience/Experience';
 import experience from '@/data/experience';
 import Section from '@/component/Section';
+import Competencies from '@/component/section/competency/Competencies';
+import competencies from '@/data/competencies';
 
 export default function Home() {
   return (
     <>
-      <div className={'max-w-(--breakpoint-md) mx-auto flex flex-col gap-20'}>
+      <div className={'max-w-(--breakpoint-lg) mx-auto flex flex-col gap-20'}>
         <div className={'flex flex-col gap-4'}>
           <IntroChips />
           <div>
@@ -49,41 +50,24 @@ export default function Home() {
         <hr className={'text-surface-300'} />
         <Section>
           <Title>
+            핵심 역량<PointText>.</PointText>
+          </Title>
+          <Competencies competencies={competencies} />
+        </Section>
+        <hr className={'text-surface-300'} />
+        <Section>
+          <Title>
+            기술<PointText>.</PointText>
+          </Title>
+        </Section>
+        <hr className={'text-surface-300'} />
+        <Section>
+          <Title>
             경력<PointText>.</PointText>
           </Title>
           <Experience experiences={experience} />
         </Section>
         <hr className={'text-surface-300'} />
-        <Section>
-          <Title>
-            핵심 역량<PointText>.</PointText>
-          </Title>
-          <div className={'flex items-stretch gap-8'}>
-            <Card
-              contents={[
-                '상용 프로젝트와 사이드프로젝트 양쪽에서 프로젝트를 기획 초기 단계부터 참여해본 경험이 있습니다.',
-                '실제 업무에서는 기술 스택 선정, 폴더 구조 설계, 공통 컴포넌트 아키텍처 등 프론트엔드 구조를 주도적으로 구성했고, 사이드프로젝트에서는 팀장을 맡아 초기 기획부터 화면 흐름, 개발 프로세스 세팅까지 전반을 책임졌습니다.',
-              ]}
-              title={'프로젝트 초기 설계 및 아키텍처 구성 경험'}
-            />
-            <Card
-              contents={[
-                'Thymeleaf, jQuery 기반의 기존 서비스를 React, Next.js 기반의 SPA 구조로 전환하며, 모듈화, 페이지 라우팅, API 연동, 상태 관리 등 전반적인 구조 리팩토링을 수행해 유지보수성과 확장성을 개선했습니다.',
-                '기술적 한계를 인식하고 대안을 설계·구현함으로써, 부서 전용 템플릿을 직접 구축한 실전 경험이 있습니다.',
-              ]}
-              title={'레거시 시스템의 대규모 리팩토링 경험'}
-            />
-            <Card
-              contents={[
-                '기획자, 디자이너, 백엔드 개발자와의 협업 과정에서 요구사항 정의, UI/UX 검토, API 명세 작성 및 수정 등을 적극 주도하며 유관 부서와 원활한 커뮤니케이션을 유지한 경험이 있습니다.',
-              ]}
-              title={'기획·디자인·백엔드와의 협업 경험'}
-            />
-          </div>
-        </Section>
-        <Section>
-          <Title>기술</Title>
-        </Section>
       </div>
     </>
   );
