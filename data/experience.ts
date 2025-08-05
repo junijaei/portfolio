@@ -1,12 +1,12 @@
-import { ExperienceItem } from '@/types/experience';
+import { ExperienceItem } from '@/types';
 
-const experience: ExperienceItem[] = [
+export const experience: ExperienceItem[] = [
   {
     company: '지넥슨',
     period: '2023.08 ~ 현재',
     works: [
       {
-        name: '베이스 어드민 템플릿 프로젝트',
+        name: '베이스 어드민 템플릿',
         period: '2024.06 ~ 2024.08',
         summary:
           '기존 레거시 어드민 프로젝트의 유지보수 한계를 보완하기 위해 최신 기술 스택 기반 어드민 템플릿을 단독 개발, 부서 내 표준 템플릿으로 자리잡음',
@@ -110,5 +110,3 @@ const experience: ExperienceItem[] = [
     ],
   },
 ];
-
-export default experience;

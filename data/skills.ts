@@ -1,0 +1,35 @@
+import { Skill } from '@/types';
+
+export const skills: Skill = {
+  Front: [
+    'React',
+    'Vue',
+    'Next.js',
+    'Nuxt',
+    'Typescript',
+    'TailwindCSS',
+    'Sass',
+    'Flowbite',
+    'Tanstack Query',
+    'swr',
+    'axios',
+    'pinia',
+    'Orval',
+    'vitest',
+    'msw',
+    'ESLint',
+    'Prettier',
+    'Three.js',
+  ],
+  DevOps: [
+    'GitHub',
+    'GitLab',
+    'GitHub Actions',
+    'GitLab CI/CD',
+    'Vercel',
+    'Notion',
+    'Jira',
+    'Figma',
+  ],
+  Back: ['Java', 'SpringBoot', 'MyBatis', 'kafka', 'Python', 'Docker'],
+};

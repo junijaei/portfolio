@@ -1,17 +1,19 @@
 export interface ExperienceItem {
   company: string;
   period: string;
-  works: WorkItem[];
+  works: Project[];
 }
 
-export interface WorkItem {
+export interface Project {
   name: string;
   period: string;
   summary?: string;
-  details: WorkDetail[];
+  links?: { label: string; url: string }[];
+  image?: string;
+  details: ProjectDetail[];
 }
 
-export interface WorkDetail {
+export interface ProjectDetail {
   label: string;
   value: string | string[];
 }

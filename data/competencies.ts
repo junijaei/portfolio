@@ -1,6 +1,6 @@
-import { Competency } from '@/types/Competency';
+import { Competency } from '@/types';
 
-const competencies: Competency[] = [
+export const competencies: Competency[] = [
   {
     key: 'building',
     title: '초기 아키텍처 설계',
@@ -28,5 +28,3 @@ const competencies: Competency[] = [
     ],
   },
 ];
-
-export default competencies;
