@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import { Vector3 } from 'three';
 
 const VERTICES = [
   [-1, -1, -1],
@@ -30,9 +30,9 @@ const EDGE_DIVISIONS = 20;
 
 export const mapCubePoints = <T>(
   callback: (params: {
-    point: THREE.Vector3;
-    start: THREE.Vector3;
-    end: THREE.Vector3;
+    point: Vector3;
+    start: Vector3;
+    end: Vector3;
     t: number;
     edgeIndex: number;
     pointIndex: number;
@@ -40,12 +40,12 @@ export const mapCubePoints = <T>(
 ): T[] => {
   const result: T[] = [];
   EDGES.forEach(([startIdx, endIdx], edgeIndex) => {
-    const start = new THREE.Vector3(...VERTICES[startIdx]);
-    const end = new THREE.Vector3(...VERTICES[endIdx]);
+    const start = new Vector3(...VERTICES[startIdx]);
+    const end = new Vector3(...VERTICES[endIdx]);
 
     for (let pointIndex = 0; pointIndex < EDGE_DIVISIONS; pointIndex++) {
       const t = pointIndex / (EDGE_DIVISIONS - 1);
-      const point = new THREE.Vector3().lerpVectors(start, end, t);
+      const point = new Vector3().lerpVectors(start, end, t);
       result.push(
         callback({
           point,
