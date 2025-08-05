@@ -1,6 +1,6 @@
 'use client';
 
-import { ExperienceItem } from '@/types/experience';
+import { ExperienceItem } from '@/types';
 import Accordion from '@/component/section/experience/Accordion';
 
 export default function Experience({
@@ -9,15 +9,17 @@ export default function Experience({
   experiences: ExperienceItem[];
 }) {
   return (
-    <div className={'mx-12'}>
+    <>
       {experiences.map(experience => (
         <div
           key={experience.company}
           className={'flex gap-8'}
         >
-          <div className={'flex flex-col gap-2'}>
-            <p className={'whitespace-nowrap text-2xl'}>{experience.company}</p>
-            <p className={'text-content-500 whitespace-nowrap'}>
+          <div className={'flex w-1/3 flex-col gap-2'}>
+            <h3 className={'whitespace-nowrap text-right text-2xl'}>
+              {experience.company}
+            </h3>
+            <p className={'text-content-500 whitespace-nowrap text-right'}>
               {experience.period}
             </p>
           </div>
@@ -34,14 +36,14 @@ export default function Experience({
                 <div
                   className={'text-content-100 flex w-full flex-col gap-4 pb-4'}
                 >
-                  <p className={'flex items-center gap-4'}>
+                  <h4 className={'flex items-center gap-4'}>
                     <span className={'text-content text-2xl font-bold'}>
                       {work.name}
                     </span>
                     <span className={'text-content-500 text-sm'}>
                       {work.period}
                     </span>
-                  </p>
+                  </h4>
                   {work.summary && (
                     <p className={'break-keep'}>{work.summary}</p>
                   )}
@@ -55,6 +57,6 @@ export default function Experience({
           </ul>
         </div>
       ))}
-    </div>
+    </>
   );
 }

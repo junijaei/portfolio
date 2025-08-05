@@ -5,10 +5,11 @@ import Introduction from '@/component/Introduction';
 import IntroChips from '@/component/IntroChips';
 import PointText from '@/component/PointText';
 import Experience from '@/component/section/experience/Experience';
-import experience from '@/data/experience';
 import Section from '@/component/Section';
 import Competencies from '@/component/section/competency/Competencies';
-import competencies from '@/data/competencies';
+import Skills from '@/component/section/Skills';
+import { competencies, experience, projects, skills } from '@/data';
+import Projects from '@/component/section/projects/Projects';
 
 export default function Home() {
   return (
@@ -18,9 +19,9 @@ export default function Home() {
           <IntroChips />
           <div>
             <p className={'text-content-500 text-8xl'}>프론트엔드 개발자</p>
-            <p className={'text-8xl'}>
+            <h1 className={'text-8xl'}>
               전희재입니다<PointText>.</PointText>
-            </p>
+            </h1>
           </div>
         </div>
         <div className={'flex gap-4'}>
@@ -49,23 +50,23 @@ export default function Home() {
         <Introduction />
         <hr className={'text-surface-300'} />
         <Section>
-          <Title>
-            핵심 역량<PointText>.</PointText>
-          </Title>
+          <Title>핵심 역량</Title>
           <Competencies competencies={competencies} />
         </Section>
         <hr className={'text-surface-300'} />
         <Section>
-          <Title>
-            기술<PointText>.</PointText>
-          </Title>
+          <Title>기술</Title>
+          <Skills skills={skills} />
         </Section>
         <hr className={'text-surface-300'} />
         <Section>
-          <Title>
-            경력<PointText>.</PointText>
-          </Title>
+          <Title>경력</Title>
           <Experience experiences={experience} />
+        </Section>
+        <hr className={'text-surface-300'} />
+        <Section>
+          <Title>프로젝트</Title>
+          <Projects projects={projects} />
         </Section>
         <hr className={'text-surface-300'} />
       </div>

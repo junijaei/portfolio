@@ -1,4 +1,4 @@
-import { WorkDetail } from '@/types/experience';
+import { ProjectDetail } from '@/types';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import clsx from 'clsx';
@@ -10,7 +10,7 @@ export default function Accordion({
   details,
 }: {
   workName: string;
-  details: WorkDetail[];
+  details: ProjectDetail[];
 }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleOpen = () => setIsOpen(!isOpen);
