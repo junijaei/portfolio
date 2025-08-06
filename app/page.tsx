@@ -10,6 +10,8 @@ import Competencies from '@/component/section/competency/Competencies';
 import Skills from '@/component/section/Skills';
 import { competencies, experience, projects, skills } from '@/data';
 import Projects from '@/component/section/projects/Projects';
+import Blog from '@/component/section/Blog';
+import blogs from '@/data/blogs';
 
 export default function Home() {
   return (
@@ -69,6 +71,14 @@ export default function Home() {
           <Projects projects={projects} />
         </Section>
         <hr className={'text-surface-300'} />
+        <Section>
+          <Title>기록</Title>
+          <Blog blogs={blogs} />
+        </Section>
+        <hr className={'text-surface-300'} />
+        <p className={'text-center text-4xl font-bold'}>
+          감사합니다<PointText>.</PointText>
+        </p>
       </div>
     </>
   );

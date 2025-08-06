@@ -4,6 +4,7 @@ import { Project } from '@/types';
 import Image from 'next/image';
 import { LucideArrowUpRight } from 'lucide-react';
 import Accordion from '@/component/section/experience/Accordion';
+import Link from 'next/link';
 
 export default function Projects({ projects }: { projects: Project[] }) {
   return (
@@ -42,7 +43,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
                   unoptimized
                   alt={`${project.name} 프로젝트 사진`}
                   className={
-                    'grayscale-50 object-cover transition hover:grayscale-0'
+                    'grayscale-100 object-cover transition hover:grayscale-0'
                   }
                   height={100}
                   src={project.image}
@@ -53,21 +54,17 @@ export default function Projects({ projects }: { projects: Project[] }) {
             {project.links && (
               <div className={'flex gap-2'}>
                 {project.links.map(link => (
-                  <button
+                  <Link
                     key={link.url}
                     className={
-                      'bg-surface-100 hover:bg-surface-200 w-fit rounded-full py-1 pl-4 pr-3 transition'
+                      'bg-surface-100 hover:bg-surface-200 inline-flex-center w-fit gap-1 rounded-full py-1 pl-4 pr-3 transition'
                     }
+                    href={link.url}
+                    target={'_blank'}
                   >
-                    <a
-                      className={'inline-flex-center gap-1'}
-                      href={link.url}
-                      target={'_blank'}
-                    >
-                      {link.label}
-                      <LucideArrowUpRight className={'h-5 w-5'} />
-                    </a>
-                  </button>
+                    {link.label}
+                    <LucideArrowUpRight className={'h-5 w-5'} />
+                  </Link>
                 ))}
               </div>
             )}
