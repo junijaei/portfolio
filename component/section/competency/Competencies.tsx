@@ -11,13 +11,13 @@ export default function Competencies({
   competencies: Competency[];
 }) {
   return (
-    <div className={'flex flex-col gap-8'}>
+    <div className={'flex flex-col gap-4 lg:gap-8'}>
       {competencies.map(competency => (
         <div
           key={competency.title}
-          className={'flex h-52'}
+          className={'flex flex-col lg:flex-row'}
         >
-          <div className={'bg-surface-100 h-52 w-52'}>
+          <div className={'bg-surface-100 mx-auto aspect-square w-1/2 lg:w-52'}>
             <Scene>
               {competency.key === 'building' ? (
                 <DotsBuilding />
@@ -28,8 +28,12 @@ export default function Competencies({
               )}
             </Scene>
           </div>
-          <div className={'flex grow flex-col gap-4 break-keep p-4'}>
-            <h3 className={'flex whitespace-nowrap text-2xl font-bold'}>
+          <div
+            className={'flex flex-col gap-2 break-keep p-4 lg:grow lg:gap-4'}
+          >
+            <h3
+              className={'flex whitespace-nowrap text-xl font-bold lg:text-2xl'}
+            >
               <LucideQuote className={'text-primary mr-2 h-6 w-6 rotate-180'} />
               {competency.title}
             </h3>

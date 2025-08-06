@@ -26,7 +26,10 @@ export default function RootLayout({
       lang="en"
     >
       <body
-        className={clsx(pretendard.className, 'bg-surface text-content p-24')}
+        className={clsx(
+          pretendard.className,
+          'bg-surface text-content px-8 py-12 md:p-24',
+        )}
       >
         {children}
       </body>

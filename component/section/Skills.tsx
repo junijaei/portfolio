@@ -3,9 +3,9 @@ import PointText from '@/component/PointText';
 
 export default function Skills({ skills }: { skills: Skill }) {
   return (
-    <div className={'mx-12 flex gap-8'}>
+    <div className={'mx-8 flex flex-col gap-8 lg:mx-12 lg:flex-row'}>
       {Object.keys(skills).map(key => (
-        <ul
+        <div
           key={key}
           className={'w-full'}
         >
@@ -14,10 +14,12 @@ export default function Skills({ skills }: { skills: Skill }) {
             <PointText>.</PointText>
           </h3>
           <hr className={'text-surface-300 my-2'} />
-          {skills[key as SkillKey].map(skill => (
-            <li key={skill}>· {skill}</li>
-          ))}
-        </ul>
+          <ul className={'grid grid-cols-2 lg:block'}>
+            {skills[key as SkillKey].map(skill => (
+              <li key={skill}>· {skill}</li>
+            ))}
+          </ul>
+        </div>
       ))}
     </div>
   );

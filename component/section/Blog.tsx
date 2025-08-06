@@ -1,15 +1,15 @@
 import type { Blog } from '@/types';
 import Image from 'next/image';
-import Link from 'next/link';
+import a from 'next/link';
 import { LucideArrowUpRight } from 'lucide-react';
 import PointText from '@/component/PointText';
 
 export default function Blog({ blogs }: { blogs: Blog[] }) {
   return (
     <div className={'flex-center flex-col gap-8'}>
-      <ul className={'mx-36 grid grid-cols-2 gap-8'}>
+      <ul className={'grid grid-cols-2 gap-2 lg:mx-36 lg:gap-8'}>
         {blogs.map(blog => (
-          <Link
+          <a
             key={blog.link}
             className={'group relative block'}
             href={blog.link}
@@ -32,14 +32,18 @@ export default function Blog({ blogs }: { blogs: Blog[] }) {
                 />
                 <div
                   className={
-                    'absolute z-10 flex h-full flex-col justify-between break-keep p-8'
+                    'absolute z-10 flex h-full flex-col justify-between break-keep p-4 lg:p-8'
                   }
                 >
-                  <h3 className={'text-surface break-keep text-xl font-bold'}>
+                  <h3
+                    className={'text-surface break-keep font-bold lg:text-xl'}
+                  >
                     {blog.title}
                   </h3>
                   <hr className={'text-surface-300'} />
-                  <p className={'text-surface-200'}>{blog.summary}</p>
+                  <p className={'text-surface-200 hidden lg:block'}>
+                    {blog.summary}
+                  </p>
                 </div>
                 <h3 className={'break-keep p-2 text-lg font-bold'}>
                   {blog.title}
@@ -47,10 +51,10 @@ export default function Blog({ blogs }: { blogs: Blog[] }) {
                 </h3>
               </div>
             </div>
-          </Link>
+          </a>
         ))}
       </ul>
-      <Link
+      <a
         className={
           'flex-center bg-surface-300 text-content-100 hover:bg-surface-400 cursor-pointer gap-2 rounded-full py-2 pl-7 pr-5 transition'
         }
@@ -59,7 +63,7 @@ export default function Blog({ blogs }: { blogs: Blog[] }) {
       >
         블로그 더 보러 가기
         <LucideArrowUpRight className={'ml-1 h-6 w-6'} />
-      </Link>
+      </a>
     </div>
   );
 }
