@@ -8,11 +8,13 @@ import { competencies, experience, projects, skills, blogs } from '@/data';
 import Projects from '@/component/section/Projects';
 import Blog from '@/component/section/Blog';
 import Intro from '@/component/intro/Intro';
-import ContractButtons from '@/component/contract/ContractButtons';
+import ContactButtons from '@/component/contact/ContactButtons';
+import Navigator from '@/component/navigator/Navigator';
 
 export default function Home() {
   return (
     <>
+      <Navigator />
       <div
         className={
           'max-w-(--breakpoint-lg) mx-auto flex flex-col gap-12 lg:gap-20'
@@ -50,7 +52,7 @@ export default function Home() {
             감사합니다<PointText>.</PointText>
           </p>
           <div className={'flex-center'}>
-            <ContractButtons />
+            <ContactButtons />
           </div>
         </div>
       </div>

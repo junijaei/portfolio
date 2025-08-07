@@ -1,8 +1,8 @@
-import ContactButton from '@/component/contract/ContactButton';
+import ContactButton from '@/component/contact/ContactButton';
 import { LucideMail, LucideNotepadText } from 'lucide-react';
 import GithubIcon from '@/component/GithubIcon';
 
-export default function ContractButtons() {
+export default function ContactButtons() {
   return (
     <div className={'flex gap-2 lg:gap-4'}>
       <ContactButton link={'mailto:hjhj7895598@gmail.com'}>

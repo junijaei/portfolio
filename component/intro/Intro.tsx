@@ -1,6 +1,6 @@
 import IntroChips from '@/component/intro/IntroChips';
 import PointText from '@/component/PointText';
-import ContractButtons from '@/component/contract/ContractButtons';
+import ContactButtons from '@/component/contact/ContactButtons';
 
 export default function Intro() {
   return (
@@ -20,7 +20,7 @@ export default function Intro() {
           </h1>
         </div>
       </div>
-      <ContractButtons />
+      <ContactButtons />
       <div className={'text-content-300 break-keep lg:text-lg'}>
         <p>
           안녕하세요, 새로운 기술을 빠르게 학습하고 실무에 적용하는 2년차
