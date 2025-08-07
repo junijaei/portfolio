@@ -2,11 +2,11 @@ import IntroChips from '@/component/intro/IntroChips';
 import PointText from '@/component/PointText';
 import ContactButtons from '@/component/contact/ContactButtons';
 
-export default function Intro() {
+export default function Intro({ introTexts }: { introTexts: string[] }) {
   return (
     <>
       <div className={'flex flex-col gap-4 pt-8 lg:pt-0'}>
-        <IntroChips />
+        <IntroChips texts={introTexts} />
         <div>
           <p
             className={

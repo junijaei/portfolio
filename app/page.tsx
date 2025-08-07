@@ -4,7 +4,14 @@ import Experience from '@/component/section/experience/Experience';
 import Section from '@/component/Section';
 import Competencies from '@/component/section/competency/Competencies';
 import Skills from '@/component/section/Skills';
-import { competencies, experience, projects, skills, blogs } from '@/data';
+import {
+  competencies,
+  experience,
+  projects,
+  skills,
+  blogs,
+  introTexts,
+} from '@/data';
 import Projects from '@/component/section/Projects';
 import Blog from '@/component/section/Blog';
 import Intro from '@/component/intro/Intro';
@@ -20,7 +27,7 @@ export default function Home() {
           'max-w-(--breakpoint-lg) mx-auto flex flex-col gap-12 lg:gap-20'
         }
       >
-        <Intro />
+        <Intro introTexts={introTexts} />
         <hr className={'text-surface-300'} />
         <Section>
           <Title>핵심 역량</Title>
