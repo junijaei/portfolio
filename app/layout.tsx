@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import '@/asset/globals.css';
 import localFont from 'next/font/local';
 import clsx from 'clsx';
+import { ThemeProvider } from 'next-themes';
 
 export const metadata: Metadata = {
   title: '전희재 포트폴리오',
@@ -22,7 +23,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={clsx(pretendard.variable, '')}
+      suppressHydrationWarning
+      className={pretendard.variable}
       lang="en"
     >
       <body
@@ -31,7 +33,7 @@ export default function RootLayout({
           'bg-surface text-content px-8 py-12 md:p-24',
         )}
       >
-        {children}
+        <ThemeProvider attribute={'class'}>{children}</ThemeProvider>
       </body>
     </html>
   );

@@ -36,7 +36,6 @@
 
 @layer base {
   .dark {
-
     /** Theme primary colors */
     --color-primary: #3adf15;
     --color-primary-100: #5fe340;
