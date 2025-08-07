@@ -1,19 +1,28 @@
+'use client';
+
 import type { Blog } from '@/types';
 import Image from 'next/image';
-import a from 'next/link';
 import { LucideArrowUpRight } from 'lucide-react';
 import PointText from '@/component/PointText';
+import { motion } from 'framer-motion';
 
 export default function Blog({ blogs }: { blogs: Blog[] }) {
   return (
     <div className={'flex-center flex-col gap-8'}>
       <ul className={'grid grid-cols-2 gap-2 lg:mx-36 lg:gap-8'}>
-        {blogs.map(blog => (
-          <a
+        {blogs.map((blog, index) => (
+          <motion.a
             key={blog.link}
             className={'group relative block'}
             href={blog.link}
+            initial={{ opacity: 0, translateY: 20 }}
             target={'_blank'}
+            transition={{
+              delay: 0.3 + Math.floor(index / 2) * 0.2,
+              duration: 0.5,
+            }}
+            viewport={{ once: true }}
+            whileInView={{ opacity: 1, translateY: 0 }}
           >
             <div
               className={
@@ -51,7 +60,7 @@ export default function Blog({ blogs }: { blogs: Blog[] }) {
                 </h3>
               </div>
             </div>
-          </a>
+          </motion.a>
         ))}
       </ul>
       <a

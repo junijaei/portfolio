@@ -4,11 +4,11 @@ import Experience from '@/component/section/experience/Experience';
 import Section from '@/component/Section';
 import Competencies from '@/component/section/competency/Competencies';
 import Skills from '@/component/section/Skills';
-import { competencies, experience, projects, skills } from '@/data';
+import { competencies, experience, projects, skills, blogs } from '@/data';
 import Projects from '@/component/section/Projects';
 import Blog from '@/component/section/Blog';
-import blogs from '@/data/blogs';
 import Intro from '@/component/intro/Intro';
+import ContractButtons from '@/component/contract/ContractButtons';
 
 export default function Home() {
   return (
@@ -45,9 +45,14 @@ export default function Home() {
           <Blog blogs={blogs} />
         </Section>
         <hr className={'text-surface-300'} />
-        <p className={'text-center text-4xl font-bold'}>
-          감사합니다<PointText>.</PointText>
-        </p>
+        <div className={'flex flex-col gap-12 py-12 lg:gap-20 lg:py-20'}>
+          <p className={'text-center text-4xl font-bold'}>
+            감사합니다<PointText>.</PointText>
+          </p>
+          <div className={'flex-center'}>
+            <ContractButtons />
+          </div>
+        </div>
       </div>
     </>
   );

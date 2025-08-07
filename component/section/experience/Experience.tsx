@@ -2,6 +2,7 @@
 
 import { ExperienceItem } from '@/types';
 import Accordion from '@/component/section/experience/Accordion';
+import { motion } from 'framer-motion';
 
 export default function Experience({
   experiences,
@@ -11,9 +12,13 @@ export default function Experience({
   return (
     <>
       {experiences.map(experience => (
-        <div
+        <motion.div
           key={experience.company}
           className={'flex flex-col gap-4 lg:flex-row lg:gap-8'}
+          initial={{ opacity: 0, translateY: 20 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          viewport={{ once: true }}
+          whileInView={{ opacity: 1, translateY: 0 }}
         >
           <div className={'flex w-full flex-col gap-2 lg:w-1/3'}>
             <h3 className={'whitespace-nowrap text-right text-2xl'}>
@@ -65,7 +70,7 @@ export default function Experience({
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
       ))}
     </>
   );

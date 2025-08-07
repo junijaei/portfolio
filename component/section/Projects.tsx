@@ -4,14 +4,19 @@ import { Project } from '@/types';
 import Image from 'next/image';
 import { LucideArrowUpRight } from 'lucide-react';
 import Accordion from '@/component/section/experience/Accordion';
+import { motion } from 'framer-motion';
 
 export default function Projects({ projects }: { projects: Project[] }) {
   return (
     <ul className={'flex flex-col gap-2'}>
-      {projects.map(project => (
-        <li
+      {projects.map((project, index) => (
+        <motion.li
           key={project.name}
           className={'flex h-full flex-col gap-4 lg:flex-row'}
+          initial={{ opacity: 0, translateY: 20 }}
+          transition={{ delay: 0.3 + index * 0.2, duration: 0.5 }}
+          viewport={{ once: true }}
+          whileInView={{ opacity: 1, translateY: 0 }}
         >
           <div className={'hidden flex-col gap-2 lg:flex lg:w-1/3'}>
             <h3 className={'whitespace-nowrap text-right text-2xl'}>
@@ -82,7 +87,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
               />
             </div>
           </div>
-        </li>
+        </motion.li>
       ))}
     </ul>
   );

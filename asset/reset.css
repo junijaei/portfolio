@@ -58,6 +58,10 @@ section {
   display: block;
 }
 
+canvas {
+  background-color: var(--color-surface-100);
+}
+
 input,
 button,
 textarea,

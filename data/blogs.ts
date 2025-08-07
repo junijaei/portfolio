@@ -1,6 +1,6 @@
 import { Blog } from '@/types/blog';
 
-const blogs: Blog[] = [
+export const blogs: Blog[] = [
   {
     title: 'Three.js 컴포넌트를 React로 구현하고 구조화해보기',
     summary:
@@ -30,5 +30,3 @@ const blogs: Blog[] = [
     thumbnail: '/images/blogs/context.png',
   },
 ];
-
-export default blogs;
