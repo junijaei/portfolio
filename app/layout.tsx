@@ -7,6 +7,15 @@ import { ThemeProvider } from 'next-themes';
 export const metadata: Metadata = {
   title: '전희재 포트폴리오',
   description: '프론트엔드 개발자 전희재 포트폴리오입니다.',
+  keywords: ['전희재', '프론트엔드', '개발자', '포트폴리오'],
+  openGraph: {
+    title: '전희재 포트폴리오',
+    description: '프론트엔드 개발자 전희재 포트폴리오입니다.',
+    type: 'website',
+    url: 'https://junijaei.co.kr',
+    siteName: '전희재 포트폴리오',
+    locale: 'ko_KR',
+  },
 };
 
 const pretendard = localFont({
