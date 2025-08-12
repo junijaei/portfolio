@@ -1,9 +1,6 @@
 import { Competency } from '@/types';
 import { LucideQuote } from 'lucide-react';
-import Scene from '@/component/cube-animation/Scene';
-import DotsBuilding from '@/component/section/competency/cubes/CubeBuilding';
-import CubeRefactoring from '@/component/section/competency/cubes/CubeRefactoring';
-import CubeMerging from '@/component/section/competency/cubes/CubeMerging';
+import CubeAnimation from '@/component/cube-animation/CubeAnimation';
 
 export default function Competencies({
   competencies,
@@ -28,7 +25,7 @@ export default function Competencies({
               )}
             </Scene>
           </div>
-          <div
+          <article
             className={'flex flex-col gap-2 break-keep p-4 lg:grow lg:gap-4'}
           >
             <h3
@@ -54,7 +51,7 @@ export default function Competencies({
                 </li>
               ))}
             </ul>
-          </div>
+          </article>
         </li>
       ))}
     </ul>

@@ -64,6 +64,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
                   {project.links.map(link => (
                     <a
                       key={link.url}
+                      aria-label={`새 창에서 ${project.name} 프로젝트 ${link.label} 열기`}
                       className={
                         'bg-surface-100 hover:bg-surface-200 inline-flex-center w-fit gap-1 rounded-full py-1 pl-4 pr-3 transition'
                       }
@@ -71,7 +72,10 @@ export default function Projects({ projects }: { projects: Project[] }) {
                       target={'_blank'}
                     >
                       {link.label}
-                      <LucideArrowUpRight className={'h-5 w-5'} />
+                      <LucideArrowUpRight
+                        aria-hidden={true}
+                        className={'h-5 w-5'}
+                      />
                     </a>
                   ))}
                 </div>

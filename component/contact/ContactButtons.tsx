@@ -5,16 +5,34 @@ import GithubIcon from '@/component/GithubIcon';
 export default function ContactButtons() {
   return (
     <div className={'flex gap-2 lg:gap-4'}>
-      <ContactButton link={'mailto:hjhj7895598@gmail.com'}>
-        <LucideMail className={'h-5 w-5 lg:h-6 lg:w-6'} />
+      <ContactButton
+        label={'메일'}
+        link={'mailto:hjhj7895598@gmail.com'}
+      >
+        <LucideMail
+          aria-hidden={true}
+          className={'h-5 w-5 lg:h-6 lg:w-6'}
+        />
         <span className={'hidden lg:inline'}>Email</span>
       </ContactButton>
-      <ContactButton link={'https://github.com/junijaei'}>
-        <GithubIcon className={'h-5 w-5 lg:h-6 lg:w-6'} />
+      <ContactButton
+        label={'깃허브'}
+        link={'https://github.com/junijaei'}
+      >
+        <GithubIcon
+          aria-hidden={true}
+          className={'h-5 w-5 lg:h-6 lg:w-6'}
+        />
         <span className={'hidden lg:inline'}>GitHub</span>
       </ContactButton>
-      <ContactButton link={'https://junijaei.tistory.com/'}>
-        <LucideNotepadText className={'h-5 w-5 lg:h-6 lg:w-6'} />
+      <ContactButton
+        label={'블로그'}
+        link={'https://junijaei.tistory.com/'}
+      >
+        <LucideNotepadText
+          aria-hidden={true}
+          className={'h-5 w-5 lg:h-6 lg:w-6'}
+        />
         <span className={'hidden lg:inline'}>Blog</span>
       </ContactButton>
     </div>

@@ -23,7 +23,7 @@ export default function Blog({ blogs }: { blogs: Blog[] }) {
             whileInView={{ opacity: 1, translateY: 0 }}
           >
             <a
-              aria-label={blog.title}
+              aria-label={`새 창에서 ${blog.title} 블로그 글 열기`}
               className={'flex flex-col overflow-hidden'}
               href={blog.link}
               target={'_blank'}
@@ -60,16 +60,13 @@ export default function Blog({ blogs }: { blogs: Blog[] }) {
                     {blog.summary}
                   </p>
                 </figcaption>
-                {/*<h3 className={'break-keep p-2 text-lg font-bold'}>*/}
-                {/*  {blog.title}*/}
-                {/*  <PointText>.</PointText>*/}
-                {/*</h3>*/}
               </figure>
             </a>
           </motion.li>
         ))}
       </ul>
       <a
+        aria-label={'새 창에서 블로그 열기'}
         className={
           'flex-center bg-surface-300 text-content-100 hover:bg-surface-400 cursor-pointer gap-2 rounded-full py-2 pl-7 pr-5 transition'
         }
@@ -77,7 +74,10 @@ export default function Blog({ blogs }: { blogs: Blog[] }) {
         target={'_blank'}
       >
         블로그 더 보러 가기
-        <LucideArrowUpRight className={'ml-1 h-6 w-6'} />
+        <LucideArrowUpRight
+          aria-hidden={true}
+          className={'ml-1 h-6 w-6'}
+        />
       </a>
     </div>
   );

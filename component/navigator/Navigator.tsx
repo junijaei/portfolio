@@ -22,6 +22,7 @@ export default function Navigator() {
         >
           <ScrollCircleProgress />
           <div
+            aria-hidden={true}
             className={
               'bg-surface-300 w-[1px] self-stretch lg:h-[1px] lg:w-full'
             }
@@ -29,21 +30,33 @@ export default function Navigator() {
           <div className={'flex gap-2 lg:flex-col'}>
             <ContactButton
               isCompact={true}
+              label={'메일'}
               link={'mailto:hjhj7895598@gmail.com'}
             >
-              <LucideMail className={'h-5 w-5 lg:h-6 lg:w-6'} />
+              <LucideMail
+                aria-hidden={true}
+                className={'h-5 w-5 lg:h-6 lg:w-6'}
+              />
             </ContactButton>
             <ContactButton
               isCompact={true}
+              label={'깃허브'}
               link={'https://github.com/junijaei'}
             >
-              <GithubIcon className={'h-5 w-5 lg:h-6 lg:w-6'} />
+              <GithubIcon
+                aria-hidden={true}
+                className={'h-5 w-5 lg:h-6 lg:w-6'}
+              />
             </ContactButton>
             <ContactButton
               isCompact={true}
+              label={'블로그'}
               link={'https://junijaei.tistory.com/'}
             >
-              <LucideNotepadText className={'h-5 w-5 lg:h-6 lg:w-6'} />
+              <LucideNotepadText
+                aria-hidden={true}
+                className={'h-5 w-5 lg:h-6 lg:w-6'}
+              />
             </ContactButton>
           </div>
         </motion.aside>
