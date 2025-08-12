@@ -24,9 +24,9 @@ export default function Experience({
             <h3 className={'whitespace-nowrap text-right text-2xl'}>
               {experience.company}
             </h3>
-            <p className={'text-content-500 whitespace-nowrap text-right'}>
+            <span className={'text-content-500 whitespace-nowrap text-right'}>
               {experience.period}
-            </p>
+            </span>
           </div>
           <ul className={'flex flex-col'}>
             {experience.works.map(work => (
@@ -34,7 +34,10 @@ export default function Experience({
                 key={work.name}
                 className={'flex gap-4'}
               >
-                <div className={'mt-1.5 flex flex-col items-center'}>
+                <div
+                  aria-hidden={true}
+                  className={'mt-1.5 flex flex-col items-center'}
+                >
                   <div className={'text-surface-500 text-sm'}>●</div>
                   <div className="bg-surface-200 h-full w-[1px]" />
                 </div>

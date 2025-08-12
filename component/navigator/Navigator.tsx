@@ -12,7 +12,7 @@ export default function Navigator() {
   return (
     <AnimatePresence initial={false}>
       {progress > 0 && (
-        <motion.div
+        <motion.aside
           animate={{ opacity: 1 }}
           className={
             'bg-surface-100/50 fixed left-1/2 top-4 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 backdrop-blur-sm lg:left-4 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 lg:flex-col lg:gap-4 lg:px-2 lg:py-4'
@@ -22,6 +22,7 @@ export default function Navigator() {
         >
           <ScrollCircleProgress />
           <div
+            aria-hidden={true}
             className={
               'bg-surface-300 w-[1px] self-stretch lg:h-[1px] lg:w-full'
             }
@@ -29,24 +30,36 @@ export default function Navigator() {
           <div className={'flex gap-2 lg:flex-col'}>
             <ContactButton
               isCompact={true}
+              label={'메일'}
               link={'mailto:hjhj7895598@gmail.com'}
             >
-              <LucideMail className={'h-5 w-5 lg:h-6 lg:w-6'} />
+              <LucideMail
+                aria-hidden={true}
+                className={'h-5 w-5 lg:h-6 lg:w-6'}
+              />
             </ContactButton>
             <ContactButton
               isCompact={true}
+              label={'깃허브'}
               link={'https://github.com/junijaei'}
             >
-              <GithubIcon className={'h-5 w-5 lg:h-6 lg:w-6'} />
+              <GithubIcon
+                aria-hidden={true}
+                className={'h-5 w-5 lg:h-6 lg:w-6'}
+              />
             </ContactButton>
             <ContactButton
               isCompact={true}
+              label={'블로그'}
               link={'https://junijaei.tistory.com/'}
             >
-              <LucideNotepadText className={'h-5 w-5 lg:h-6 lg:w-6'} />
+              <LucideNotepadText
+                aria-hidden={true}
+                className={'h-5 w-5 lg:h-6 lg:w-6'}
+              />
             </ContactButton>
           </div>
-        </motion.div>
+        </motion.aside>
       )}
     </AnimatePresence>
   );

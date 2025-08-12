@@ -5,11 +5,10 @@ import { useContext, useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { easeInOut } from 'motion';
 import { getPointsCount, mapCubePoints } from '@/utils/three-utils';
-import CubeGroup from '@/component/cube-animation/CubeGroup';
 import CubePoints from '@/component/cube-animation/CubePoints';
 import { CubeContext } from '@/component/cube-animation/CubeContext';
 
-function CubeRefactoringPoints() {
+export default function CubeRefactoring() {
   const pointsRef = useRef<Points>(null);
   const context = useContext(CubeContext);
 
@@ -88,13 +87,5 @@ function CubeRefactoringPoints() {
       currentPositions={currentPositions}
       pointsRef={pointsRef}
     />
-  );
-}
-
-export default function CubeRefactoring() {
-  return (
-    <CubeGroup>
-      <CubeRefactoringPoints />
-    </CubeGroup>
   );
 }

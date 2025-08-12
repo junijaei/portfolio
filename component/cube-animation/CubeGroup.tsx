@@ -8,7 +8,7 @@ import useCubeAnimation from '@/component/cube-animation/useCubeAnimation';
 
 type Phase = 'animate' | 'rotate' | 'hold';
 
-export default function DotsGroup({ children }: { children: ReactNode }) {
+export default function CubeGroup({ children }: { children: ReactNode }) {
   const PHASE_ORDER: Phase[] = ['animate', 'rotate', 'hold'];
   const DURATION: Record<Phase, number> = {
     animate: 2,

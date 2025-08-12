@@ -18,7 +18,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
           viewport={{ once: true }}
           whileInView={{ opacity: 1, translateY: 0 }}
         >
-          <div className={'hidden flex-col gap-2 lg:flex lg:w-1/3'}>
+          <div className={'hidden flex-col gap-2 lg:flex lg:w-1/3 lg:shrink-0'}>
             <h3 className={'whitespace-nowrap text-right text-2xl'}>
               {project.name}
             </h3>
@@ -51,7 +51,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
                   <Image
                     fill
                     unoptimized
-                    alt={`${project.name} 프로젝트 사진`}
+                    alt={`${project.name} 프로젝트`}
                     className={
                       'grayscale-100 object-cover transition hover:grayscale-0'
                     }
@@ -64,6 +64,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
                   {project.links.map(link => (
                     <a
                       key={link.url}
+                      aria-label={`새 창에서 ${project.name} 프로젝트 ${link.label} 열기`}
                       className={
                         'bg-surface-100 hover:bg-surface-200 inline-flex-center w-fit gap-1 rounded-full py-1 pl-4 pr-3 transition'
                       }
@@ -71,16 +72,17 @@ export default function Projects({ projects }: { projects: Project[] }) {
                       target={'_blank'}
                     >
                       {link.label}
-                      <LucideArrowUpRight className={'h-5 w-5'} />
+                      <LucideArrowUpRight
+                        aria-hidden={true}
+                        className={'h-5 w-5'}
+                      />
                     </a>
                   ))}
                 </div>
               )}
-              <div className={'flex flex-col'}>
-                {project.summary && (
-                  <p className={'break-keep'}>{project.summary}</p>
-                )}
-              </div>
+              {project.summary && (
+                <p className={'break-keep'}>{project.summary}</p>
+              )}
               <Accordion
                 details={project.details}
                 workName={project.name}
