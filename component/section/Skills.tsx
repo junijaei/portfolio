@@ -20,7 +20,10 @@ export default function Skills({ skills }: { skills: Skill }) {
             {key}
             <PointText>.</PointText>
           </h3>
-          <hr className={'text-surface-300 my-2'} />
+          <hr
+            aria-hidden={true}
+            className={'text-surface-300 my-2'}
+          />
           <ul className={'grid grid-cols-2 lg:block'}>
             {skills[key as SkillKey].map(skill => (
               <li key={skill}>· {skill}</li>

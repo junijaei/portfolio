@@ -11,9 +11,9 @@ export default function Competencies({
   competencies: Competency[];
 }) {
   return (
-    <div className={'flex flex-col gap-4 lg:gap-8'}>
+    <ul className={'flex flex-col gap-4 lg:gap-8'}>
       {competencies.map(competency => (
-        <div
+        <li
           key={competency.title}
           className={'flex flex-col lg:flex-row'}
         >
@@ -34,10 +34,16 @@ export default function Competencies({
             <h3
               className={'flex whitespace-nowrap text-xl font-bold lg:text-2xl'}
             >
-              <LucideQuote className={'text-primary mr-2 h-6 w-6 rotate-180'} />
+              <LucideQuote
+                aria-hidden={true}
+                className={'text-primary mr-2 h-6 w-6 rotate-180'}
+              />
               {competency.title}
             </h3>
-            <hr className={'text-surface-300'} />
+            <hr
+              aria-hidden={true}
+              className={'text-surface-300'}
+            />
             <ul>
               {competency.content.map(line => (
                 <li
@@ -49,8 +55,8 @@ export default function Competencies({
               ))}
             </ul>
           </div>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

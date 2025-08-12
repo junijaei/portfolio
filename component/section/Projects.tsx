@@ -18,7 +18,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
           viewport={{ once: true }}
           whileInView={{ opacity: 1, translateY: 0 }}
         >
-          <div className={'hidden flex-col gap-2 lg:flex lg:w-1/3'}>
+          <div className={'hidden flex-col gap-2 lg:flex lg:w-1/3 lg:shrink-0'}>
             <h3 className={'whitespace-nowrap text-right text-2xl'}>
               {project.name}
             </h3>
@@ -51,7 +51,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
                   <Image
                     fill
                     unoptimized
-                    alt={`${project.name} 프로젝트 사진`}
+                    alt={`${project.name} 프로젝트`}
                     className={
                       'grayscale-100 object-cover transition hover:grayscale-0'
                     }
@@ -76,11 +76,9 @@ export default function Projects({ projects }: { projects: Project[] }) {
                   ))}
                 </div>
               )}
-              <div className={'flex flex-col'}>
-                {project.summary && (
-                  <p className={'break-keep'}>{project.summary}</p>
-                )}
-              </div>
+              {project.summary && (
+                <p className={'break-keep'}>{project.summary}</p>
+              )}
               <Accordion
                 details={project.details}
                 workName={project.name}

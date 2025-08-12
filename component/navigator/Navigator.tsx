@@ -12,7 +12,7 @@ export default function Navigator() {
   return (
     <AnimatePresence initial={false}>
       {progress > 0 && (
-        <motion.div
+        <motion.aside
           animate={{ opacity: 1 }}
           className={
             'bg-surface-100/50 fixed left-1/2 top-4 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full px-4 py-2 backdrop-blur-sm lg:left-4 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 lg:flex-col lg:gap-4 lg:px-2 lg:py-4'
@@ -46,7 +46,7 @@ export default function Navigator() {
               <LucideNotepadText className={'h-5 w-5 lg:h-6 lg:w-6'} />
             </ContactButton>
           </div>
-        </motion.div>
+        </motion.aside>
       )}
     </AnimatePresence>
   );

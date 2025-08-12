@@ -8,15 +8,13 @@ import { motion } from 'framer-motion';
 
 export default function Blog({ blogs }: { blogs: Blog[] }) {
   return (
-    <div className={'flex-center flex-col gap-8'}>
-      <ul className={'grid grid-cols-2 gap-2 lg:mx-36 lg:gap-8'}>
+    <div className={'flex-center w-full flex-col gap-8'}>
+      <ul className={'grid w-full grid-cols-2 gap-2 lg:gap-8 lg:px-36'}>
         {blogs.map((blog, index) => (
-          <motion.a
+          <motion.li
             key={blog.link}
-            className={'group relative block'}
-            href={blog.link}
+            className={'relative'}
             initial={{ opacity: 0, translateY: 20 }}
-            target={'_blank'}
             transition={{
               delay: 0.3 + Math.floor(index / 2) * 0.2,
               duration: 0.5,
@@ -24,43 +22,51 @@ export default function Blog({ blogs }: { blogs: Blog[] }) {
             viewport={{ once: true }}
             whileInView={{ opacity: 1, translateY: 0 }}
           >
-            <div
-              className={
-                'border-surface-300 flex h-full w-full flex-col overflow-hidden'
-              }
+            <a
+              aria-label={blog.title}
+              className={'flex flex-col overflow-hidden'}
+              href={blog.link}
+              target={'_blank'}
             >
-              <div className={'relative aspect-square w-full overflow-hidden'}>
+              <figure className={'relative aspect-square overflow-hidden'}>
                 <Image
                   fill
-                  alt={`${blog.title} 썸네일 이미지`}
+                  alt={`${blog.title} 썸네일`}
                   className={'blur-xs object-cover transition'}
                   src={blog.thumbnail}
                 />
                 <div
-                  className={'bg-content-100/70 absolute z-10 h-full w-full'}
+                  aria-hidden={true}
+                  className={'bg-content-300/70 absolute z-10 h-full w-full'}
                 />
-                <div
+                <figcaption
                   className={
-                    'absolute z-10 flex h-full flex-col justify-between break-keep p-4 lg:p-8'
+                    'absolute z-10 flex h-full flex-col justify-between break-keep p-4'
                   }
                 >
                   <h3
-                    className={'text-surface break-keep font-bold lg:text-xl'}
+                    className={
+                      'text-surface-100 basis-1/3 break-keep p-2 font-bold lg:text-xl'
+                    }
                   >
                     {blog.title}
+                    <PointText>.</PointText>
                   </h3>
-                  <hr className={'text-surface-300'} />
+                  <hr
+                    aria-hidden={true}
+                    className={'text-surface-300'}
+                  />
                   <p className={'text-surface-200 hidden lg:block'}>
                     {blog.summary}
                   </p>
-                </div>
-                <h3 className={'break-keep p-2 text-lg font-bold'}>
-                  {blog.title}
-                  <PointText>.</PointText>
-                </h3>
-              </div>
-            </div>
-          </motion.a>
+                </figcaption>
+                {/*<h3 className={'break-keep p-2 text-lg font-bold'}>*/}
+                {/*  {blog.title}*/}
+                {/*  <PointText>.</PointText>*/}
+                {/*</h3>*/}
+              </figure>
+            </a>
+          </motion.li>
         ))}
       </ul>
       <a
