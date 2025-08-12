@@ -1,5 +1,5 @@
 export interface Competency {
-  key: 'building' | 'refactoring' | 'merging';
+  key: 'building' | 'refactoring' | 'cooperation';
   title: string;
   content: string[];
 }

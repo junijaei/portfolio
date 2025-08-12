@@ -13,7 +13,7 @@ const CUBE_ANIMATIONS = {
     component: <CubeRefactoring />,
     alt: '점으로 이루어진 정육면체가 흐릿한 상태에서 점점 뚜렷하게 변하는 애니메이션',
   },
-  merging: {
+  cooperation: {
     component: <CubeMerging />,
     alt: '점으로 이루어진 정육면체 세개가 모여 합쳐지는 애니메이션',
   },
