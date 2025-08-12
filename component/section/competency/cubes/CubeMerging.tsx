@@ -4,9 +4,8 @@ import { useContext, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import CubeCooperation from '@/component/section/competency/cubes/CubeCooperation';
 import { CubeContext } from '@/component/cube-animation/CubeContext';
-import CubeGroup from '@/component/cube-animation/CubeGroup';
 
-function CubeMergingPoints() {
+export default function CubeMergingPoints() {
   const context = useContext(CubeContext);
 
   if (!context) throw new Error();
@@ -42,13 +41,5 @@ function CubeMergingPoints() {
         />
       ))}
     </>
-  );
-}
-
-export default function CubeMerging() {
-  return (
-    <CubeGroup>
-      <CubeMergingPoints />
-    </CubeGroup>
   );
 }

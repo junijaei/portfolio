@@ -15,15 +15,7 @@ export default function Competencies({
           className={'flex flex-col lg:flex-row'}
         >
           <div className={'bg-surface-100 mx-auto aspect-square w-1/2 lg:w-52'}>
-            <Scene>
-              {competency.key === 'building' ? (
-                <DotsBuilding />
-              ) : competency.key === 'refactoring' ? (
-                <CubeRefactoring />
-              ) : (
-                <CubeMerging />
-              )}
-            </Scene>
+            <CubeAnimation animationKey={competency.key} />
           </div>
           <article
             className={'flex flex-col gap-2 break-keep p-4 lg:grow lg:gap-4'}
