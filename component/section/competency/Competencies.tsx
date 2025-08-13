@@ -14,11 +14,11 @@ export default function Competencies({
           key={competency.title}
           className={'flex flex-col lg:flex-row'}
         >
-          <div className={'bg-surface-100 mx-auto aspect-square w-1/2 lg:w-52'}>
+          <div className={'bg-surface-100 aspect-square w-full lg:w-52'}>
             <CubeAnimation animationKey={competency.key} />
           </div>
           <article
-            className={'flex flex-col gap-2 break-keep p-4 lg:grow lg:gap-4'}
+            className={'flex flex-col gap-2 break-keep py-4 lg:gap-4 lg:px-4'}
           >
             <h3
               className={'flex whitespace-nowrap text-xl font-bold lg:text-2xl'}
