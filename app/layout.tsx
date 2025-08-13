@@ -39,7 +39,7 @@ export default function RootLayout({
       <body
         className={clsx(
           pretendard.className,
-          'bg-surface text-content px-8 py-12 md:p-24',
+          'bg-surface text-content px-8 py-12 transition md:p-24',
         )}
       >
         <ThemeProvider attribute={'class'}>{children}</ThemeProvider>
