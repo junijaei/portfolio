@@ -3,6 +3,7 @@ import '@/asset/globals.css';
 import localFont from 'next/font/local';
 import clsx from 'clsx';
 import { ThemeProvider } from 'next-themes';
+import Navigator from '@/component/navigator/Navigator';
 
 export const metadata: Metadata = {
   title: '전희재 포트폴리오',
@@ -42,7 +43,10 @@ export default function RootLayout({
           'bg-surface text-content px-8 py-12 transition md:p-24',
         )}
       >
-        <ThemeProvider attribute={'class'}>{children}</ThemeProvider>
+        <ThemeProvider attribute={'class'}>
+          <Navigator />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
