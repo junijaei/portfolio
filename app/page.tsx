@@ -14,7 +14,7 @@ import {
 import Projects from '@/component/section/Projects';
 import Blog from '@/component/section/Blog';
 import Intro from '@/component/section/intro/Intro';
-import Outro from '@/component/section/Outro';
+import Outro from '@/component/section/outro/Outro';
 
 export default function Home() {
   return (
