@@ -3,7 +3,7 @@
 import type { Blog } from '@/types';
 import Image from 'next/image';
 import { LucideArrowUpRight } from 'lucide-react';
-import PointText from '@/component/PointText';
+import PointDot from '@/component/PointDot';
 import { motion } from 'framer-motion';
 
 export default function Blog({ blogs }: { blogs: Blog[] }) {
@@ -50,7 +50,7 @@ export default function Blog({ blogs }: { blogs: Blog[] }) {
                     }
                   >
                     {blog.title}
-                    <PointText>.</PointText>
+                    <PointDot />
                   </h3>
                   <hr
                     aria-hidden={true}
