@@ -1,6 +1,6 @@
 import ContactButton from '@/component/contact/ContactButton';
 import { LucideMail, LucideNotepadText } from 'lucide-react';
-import GithubIcon from '@/component/GithubIcon';
+import GithubIcon from '@/component/contact/GithubIcon';
 
 export default function ContactButtons() {
   return (

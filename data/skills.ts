@@ -1,6 +1,6 @@
-import { Skill } from '@/types';
+import { Skills } from '@/types';
 
-export const skills: Skill = {
+export const skills: Skills = {
   Front: [
     'React',
     'Vue',

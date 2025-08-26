@@ -1,3 +1,3 @@
-export type SkillKey = 'Front' | 'DevOps' | 'Back';
+type SkillCategory = 'Front' | 'DevOps' | 'Back';
 
-export type Skill = Record<SkillKey, string[]>;
+export type Skills = Record<SkillCategory, string[]>;

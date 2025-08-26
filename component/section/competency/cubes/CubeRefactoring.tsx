@@ -41,44 +41,45 @@ export default function CubeRefactoring() {
   }, []);
 
   useFrame(() => {
-    if (!pointsRef.current || !context.groupRef.current) return;
+    if (
+      !pointsRef.current ||
+      !context.groupRef.current ||
+      context.phase !== 'animate'
+    )
+      return;
 
     const posAttr = pointsRef.current.geometry.attributes.position;
 
-    if (context.phase === 'animate') {
-      const t = Math.min(context.clock.current / context.duration.animate, 1);
-      if (t < 0.5) {
-        // [0.0 ~ 0.5) → fall 단계
-        const localT = t / 0.5;
-        const eased = easeInOut(localT);
+    const t = Math.min(context.clock.current / context.duration.animate, 1);
+    if (t < 0.5) {
+      // [0.0 ~ 0.5) → fall 단계
+      const localT = t / 0.5;
+      const eased = easeInOut(localT);
 
-        for (let i = 0; i < getPointsCount() * 3; i++) {
-          const interpolated = MathUtils.lerp(
-            fallStartPositions[i],
-            fallEndPositions[i],
-            eased,
-          );
-          currentPositions[i] = interpolated + jitter();
-        }
-      } else {
-        // [0.5 ~ 1.0] → unclean 단계
-        const localT = (t - 0.5) / 0.5;
-        const shakeStrength = (1 - localT) * 0.7;
-
-        for (let i = 0; i < mergedPositions.length; i += 3) {
-          const baseX = mergedPositions[i];
-          const baseY = mergedPositions[i + 1];
-          const baseZ = mergedPositions[i + 2];
-
-          currentPositions[i] = baseX + (Math.random() - 0.5) * shakeStrength;
-          currentPositions[i + 1] =
-            baseY + (Math.random() - 0.5) * shakeStrength;
-          currentPositions[i + 2] =
-            baseZ + (Math.random() - 0.5) * shakeStrength;
-        }
+      for (let i = 0; i < getPointsCount() * 3; i++) {
+        const interpolated = MathUtils.lerp(
+          fallStartPositions[i],
+          fallEndPositions[i],
+          eased,
+        );
+        currentPositions[i] = interpolated + jitter();
       }
-      if (t >= 1) context.goNextPhase();
+    } else {
+      // [0.5 ~ 1.0] → unclean 단계
+      const localT = (t - 0.5) / 0.5;
+      const shakeStrength = (1 - localT) * 0.7;
+
+      for (let i = 0; i < mergedPositions.length; i += 3) {
+        const baseX = mergedPositions[i];
+        const baseY = mergedPositions[i + 1];
+        const baseZ = mergedPositions[i + 2];
+
+        currentPositions[i] = baseX + (Math.random() - 0.5) * shakeStrength;
+        currentPositions[i + 1] = baseY + (Math.random() - 0.5) * shakeStrength;
+        currentPositions[i + 2] = baseZ + (Math.random() - 0.5) * shakeStrength;
+      }
     }
+    if (t >= 1) context.goNextPhase();
     posAttr.needsUpdate = true;
   });
 

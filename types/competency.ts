@@ -1,5 +1,7 @@
+import { CubeAnimationType } from '@/types/cubeAnimation';
+
 export interface Competency {
-  key: 'building' | 'refactoring' | 'cooperation';
+  key: CubeAnimationType;
   title: string;
   content: string[];
 }
