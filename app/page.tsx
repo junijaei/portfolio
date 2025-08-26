@@ -7,13 +7,14 @@ import {
   blogs,
   competencies,
   experience,
-  introTexts,
+  introduction,
+  jobDebugLogs,
   projects,
   skills,
 } from '@/data';
 import Projects from '@/component/section/Projects';
 import Blog from '@/component/section/Blog';
-import Intro from '@/component/intro/Intro';
+import Intro from '@/component/section/intro/Intro';
 import ContactButtons from '@/component/contact/ContactButtons';
 import Navigator from '@/component/navigator/Navigator';
 
@@ -26,7 +27,10 @@ export default function Home() {
           'max-w-(--breakpoint-lg) mx-auto flex flex-col gap-12 lg:gap-20'
         }
       >
-        <Intro introTexts={introTexts} />
+        <Intro
+          introduction={introduction}
+          jobDebugLogs={jobDebugLogs}
+        />
         <hr className={'text-surface-300'} />
         <Section title={'핵심역량'}>
           <Competencies competencies={competencies} />
