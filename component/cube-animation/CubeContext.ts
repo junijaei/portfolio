@@ -1,7 +1,7 @@
 import { createContext, Dispatch, RefObject, SetStateAction } from 'react';
 import { Group, Object3DEventMap } from 'three';
+import { Phase } from '@/types';
 
-type Phase = 'animate' | 'rotate' | 'hold';
 interface CubeContextType {
   clock: RefObject<number>;
   phase: Phase;

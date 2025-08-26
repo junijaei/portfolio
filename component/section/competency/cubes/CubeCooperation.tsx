@@ -14,6 +14,12 @@ export default function CubeCooperation({
   progress: number;
 }) {
   const pointsRef = useRef<Points>(null);
+  const prevProgress = useRef<number>(-1);
+
+  const startPosition = useMemo(() => {
+    const [sx, sy, sz] = initialPosition;
+    return new Vector3(sx, sy, sz);
+  }, [initialPosition]);
 
   const { edgePoints, currentPositions } = useMemo(() => {
     const result = mapCubePoints(({ point }) => [
@@ -30,25 +36,24 @@ export default function CubeCooperation({
   useFrame(() => {
     if (!pointsRef.current) return;
 
-    const [sx, sy, sz] = initialPosition;
-    const startPosition = new Vector3(sx, sy, sz);
+    if (Math.abs(progress - prevProgress.current) > 0.005) {
+      for (let i = 0; i < edgePoints.length; i += 3) {
+        const x0 = edgePoints[i] + startPosition.x;
+        const y0 = edgePoints[i + 1] + startPosition.y;
+        const z0 = edgePoints[i + 2] + startPosition.z;
 
-    for (let i = 0; i < edgePoints.length; i += 3) {
-      const x0 = edgePoints[i] + startPosition.x;
-      const y0 = edgePoints[i + 1] + startPosition.y;
-      const z0 = edgePoints[i + 2] + startPosition.z;
+        const x1 = edgePoints[i];
+        const y1 = edgePoints[i + 1];
+        const z1 = edgePoints[i + 2];
 
-      const x1 = edgePoints[i];
-      const y1 = edgePoints[i + 1];
-      const z1 = edgePoints[i + 2];
+        currentPositions[i] = MathUtils.lerp(x0, x1, progress);
+        currentPositions[i + 1] = MathUtils.lerp(y0, y1, progress);
+        currentPositions[i + 2] = MathUtils.lerp(z0, z1, progress);
+      }
 
-      currentPositions[i] = MathUtils.lerp(x0, x1, progress);
-      currentPositions[i + 1] = MathUtils.lerp(y0, y1, progress);
-      currentPositions[i + 2] = MathUtils.lerp(z0, z1, progress);
+      pointsRef.current.visible = true;
+      pointsRef.current.geometry.attributes.position.needsUpdate = true;
     }
-
-    pointsRef.current.visible = true;
-    pointsRef.current.geometry.attributes.position.needsUpdate = true;
   });
 
   return (

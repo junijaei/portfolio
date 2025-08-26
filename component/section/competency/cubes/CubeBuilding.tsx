@@ -9,6 +9,7 @@ import CubePoints from '@/component/cube-animation/CubePoints';
 
 export default function CubeBuilding() {
   const pointsRef = useRef<Points>(null);
+  const prevVisiblePoints = useRef<number>(0);
   const context = useContext(CubeContext);
 
   if (!context) throw new Error();
@@ -27,26 +28,30 @@ export default function CubeBuilding() {
   }, []);
 
   useFrame(() => {
-    if (!pointsRef.current || !context.groupRef.current) return;
+    if (
+      !pointsRef.current ||
+      !context.groupRef.current ||
+      context.phase !== 'animate'
+    )
+      return;
 
-    const posAttr = pointsRef.current.geometry.attributes.position;
+    const totalPoints = getPointsCount();
+    const progress = Math.min(
+      context.clock.current / context.duration.animate,
+      1,
+    );
+    const visiblePoints = Math.floor(totalPoints * progress);
 
-    if (context.phase === 'animate') {
-      const totalPoints = getPointsCount();
-      const progress = Math.min(
-        context.clock.current / context.duration.animate,
-        1,
-      );
-      const visiblePoints = Math.floor(totalPoints * progress);
+    if (visiblePoints !== prevVisiblePoints.current) {
+      const posAttr = pointsRef.current.geometry.attributes.position;
 
-      for (let i = 0; i < visiblePoints * 3; i++)
-        currentPositions[i] = mergedPositions[i];
-
+      currentPositions.set(mergedPositions.subarray(0, visiblePoints * 3));
       pointsRef.current.geometry.setDrawRange(0, visiblePoints);
-
       posAttr.needsUpdate = true;
-      if (progress >= 1) context.goNextPhase();
+      prevVisiblePoints.current = visiblePoints;
     }
+
+    if (progress >= 1) context.goNextPhase();
   });
 
   return (
