@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import clsx from 'clsx';
 import { ThemeProvider } from 'next-themes';
 import Navigator from '@/component/navigator/Navigator';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: '전희재 포트폴리오',
@@ -37,6 +38,7 @@ export default function RootLayout({
       className={pretendard.variable}
       lang="en"
     >
+      <Analytics />
       <body
         className={clsx(
           pretendard.className,
